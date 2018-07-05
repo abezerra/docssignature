@@ -1,0 +1,17 @@
+{
+  "name": "nodeapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Guaracy A Lima <guaracyaraujolima@gmail.com> (http://guabirabadev.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "html-pdf": "^2.2.0",
+    "image-watermark": "0.0.7",
+    "path": "^0.12.7"
+  }
+}
