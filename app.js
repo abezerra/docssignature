@@ -3,6 +3,12 @@ const multer = require('multer');
 const ejs = require('ejs');
 const path = require('path');
 
+//assinatura dos documentos 
+var watermark = require('image-watermark');
+var fileName = __dirname + '/doc/xpto.pdf';
+let name =  Date.toString;
+
+
 // Set The Storage Engine
 const storage = multer.diskStorage({
   destination: './public/uploads/',
@@ -23,7 +29,7 @@ const upload = multer({
 // Check File Type
 function checkFileType(file, cb){
   // Allowed ext
-  const filetypes = /jpeg|jpg|png|gif/;
+  const filetypes = /jpeg|jpg|png|gif|pdf/;
   // Check ext
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   // Check mime
