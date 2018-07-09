@@ -2,18 +2,44 @@ const express = require('express');
 const multer = require('multer');
 const ejs = require('ejs');
 const path = require('path');
-
+const moment = require('moment')
+moment.locale("pt-br")
 //assinatura dos documentos 
 var watermark = require('image-watermark');
-var fileName = __dirname + '/doc/xpto.pdf';
-let name =  Date.toString;
 
+let name =  Date.now();
+const hoje = moment().format('LLLL')
+
+const options = {
+  'text': 'Revisado e aprovado pelo Departamento Jurídico da Brasal em ' + hoje,
+  'dstPath': __dirname + '/public/doc/' + name + '.pdf',
+  'align': 'ltr',
+  'pointsize': 10,
+  //'position': 'SouthWest',
+  'position': 'SouthEast',
+  'color' : 'rgb(154, 50, 46)'
+}
+
+//assina o documento
+function assina(file){
+  //watermark.embedWatermark(file, options);
+  let cu = __dirname + '/public/uploads/'+ file;
+  console.log('a porra do lugar onde o arquivo esta', cu);
+  
+  watermark.embedWatermark(cu, options);
+}
 
 // Set The Storage Engine
 const storage = multer.diskStorage({
   destination: './public/uploads/',
   filename: function(req, file, cb){
-    cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    ximbica = file.fieldname + '-' + Date.now() + path.extname(file.originalname)
+    
+  //watermark.embedWatermark(__dirname + '/public/uploads/'+ ximbica, options);
+
+    
+    cb(null,ximbica);
+    assina(ximbica)
   }
 });
 
@@ -54,6 +80,7 @@ app.use(express.static('./public'));
 app.get('/', (req, res) => res.render('index'));
 
 app.post('/upload', (req, res) => {
+  
   upload(req, res, (err) => {
     if(err){
       res.render('index', {
@@ -65,14 +92,18 @@ app.post('/upload', (req, res) => {
           msg: 'Error: No File Selected!'
         });
       } else {
+        
+        console.log('a porra da ximbica no fim', ximbica)
         res.render('index', {
           msg: 'Arquivo assinado com sucesso!',
-          file: `uploads/${req.file.filename}`
+          file: `doc/${name}.pdf`
         });
       }
     }
   });
 });
+
+
 
 const port = 3000;
 
