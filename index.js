@@ -17,7 +17,7 @@ const numberOfPage = pdfhReader.getPagesCount();
 // for (var i = 0; i <= pdfhReader.getPagesCount(); i--) {
 	
 // }
-var pageModifier = new hummus.PDFPageModifier(pdfWriter, 0 , true);
+var pageModifier = new hummus.PDFPageModifier(pdfWriter, 0);
 
 var ctx = pageModifier.startContext().getContext();
 
