@@ -92,8 +92,6 @@ app.post('/upload', (req, res) => {
           msg: 'Error: No File Selected!'
         });
       } else {
-        
-        console.log('a porra da ximbica no fim', ximbica)
         res.render('index', {
           msg: 'Arquivo assinado com sucesso!',
           file: `doc/${name}.pdf`
