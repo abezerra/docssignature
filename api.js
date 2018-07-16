@@ -20,12 +20,13 @@ function assina(file) {
 const storage = multer.diskStorage({
   destination: './public/uploads/',
   filename: function (req, file, cb) {
-    ximbica = file.fieldname + Date.now() + path.extname(file.originalname)
+    var ximbica = file.fieldname + Date.now() + path.extname(file.originalname)
     cb(null, ximbica);
     assina(ximbica)
     console.log(ximbica);
 
     setTimeout(() => {
+
       var pdfWriter = hummus.createWriterToModify(__dirname + '/public/uploads/' + ximbica, {
         modifiedFilePath: __dirname + '/public/output/' + name + '.pdf'
       });
@@ -36,20 +37,21 @@ const storage = multer.diskStorage({
 
       pageModifier.startContext().getContext().writeText(
         'Revisado e aprovado pelo Departamento Jurídico da Brasal em ' + hoje,
-        100, 800, {
+        100, 20, {
           font: pdfWriter.getFontForFile(__dirname + '/public/fonts/Couri.ttf'),
           size: 8,
           colorspace: 'gray',
           color: 0x00
         }
       );
-
-      ctx.drawImage(450, 700, img, {
+      
+      ctx.drawImage(450, 40, img, {
         transformation: {
           width: 100,
           height: 100
         }
       });
+
       pageModifier.endContext().writePage();
       pdfWriter.end();
     }, 999)
