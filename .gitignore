@@ -1,8 +1,5 @@
 node_modules
-public/doc
-public/img
 public/uploads
-public/output
 xpto.js
 .DS_Store
 # Logs
