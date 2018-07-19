@@ -1,56 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  
+  <style>
+    nav {
+      color: #fff;
+      background-color: #203c56;
+      width: 100%;
+      height: 56px;
+      line-height: 56px;
+    }
+  </style>
+
   <title>Brasal - Assinatura Digital</title>
 </head>
+
 <body>
-    <nav>
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo">
-            <img src="https://pbs.twimg.com/profile_images/447554996/marca_brasal_400x400.png" width="60" height="60"/>
-          </a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="">Brasal Labs</a></li>
-          </ul>
-        </div>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">
+        <!-- <img src="https://pbs.twimg.com/profile_images/447554996/marca_brasal_400x400.png" width="60" height="60"/> -->
+        <img src="/img/logo_brasal.png" />
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a href="">Brasal Labs</a>
+        </li>
+      </ul>
+    </div>
   </nav>
   <div class="container">
 
-    
-  
-
-      <h4>Assinatura de documentos</h4>
-            
-      <%= typeof msg != 'undefined' ? msg : '' %>
 
 
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-      <div class="file-field input-field">
-        <div class="btn grey">
-          <span>Documento</span>
-          <input name="myImage" type="file" accept=".pdf">
+
+    <h4>Revisão e Aprovação pelo Departamento Jurídico da Brasal</h4>
+
+    <%= typeof msg != 'undefined' ? msg : '' %>
+
+
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="file-field input-field">
+          <div class="btn grey">
+            <span>Documento</span>
+            <input name="myImage" type="file" accept=".pdf">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
         </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
-        </div>
-      </div>
-      <button type="submit" class="btn">Assinar</button>
-    </form>
-    <br>
-    <!-- <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img"> -->
-    <embed src="http://revisao_juridica:3002/<%= typeof file != 'undefined' ? file : '' %>" width="700" height="375">
+        <button type="submit" class="btn">Assinar Documento</button>
+      </form>
+      <br>
+      <!-- <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img"> -->
+      <embed src="http://revisao_juridica:3002/<%= typeof file != 'undefined' ? file : '' %>" width="700" height="375">
 
   </div>
 
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
+
 </html>
