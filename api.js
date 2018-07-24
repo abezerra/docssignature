@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
           color: 0x00
         }
       );
-      
+
       ctx.drawImage(450, 40, img, {
         transformation: {
           width: 100,
@@ -109,10 +109,18 @@ app.post('/upload', (req, res) => {
           msg: 'Error: No File Selected!'
         });
       } else {
-        res.render('index', {
-          msg: 'Arquivo assinado com sucesso!',
-          file: `output/${name}.pdf`
-        });
+
+        setTimeout(() => {
+          res.set({
+            'Content-Type': 'text/plain',
+            'Location': '/'
+          });
+          res.download(__dirname + `/public/output/${name}.pdf`);
+        }, 1200)
+        // res.render('index', {
+        //   msg: 'Arquivo assinado com sucesso!',
+        //   file: `output/${name}.pdf`
+        // });
       }
     }
   });

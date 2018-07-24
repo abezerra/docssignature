@@ -41,8 +41,7 @@
     <h4>Revisão e Aprovação pelo Departamento Jurídico da Brasal</h4>
 
     <%= typeof msg != 'undefined' ? msg : '' %>
-
-
+  
       <form action="/upload" method="POST" enctype="multipart/form-data">
         <div class="file-field input-field">
           <div class="btn grey">
@@ -57,8 +56,8 @@
       </form>
       <br>
       <!-- <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img"> -->
-      <embed src="http://revisao_juridica:3002/<%= typeof file != 'undefined' ? file : '' %>" width="700" height="375">
-
+      <!-- <embed src="http://revisao_juridica:3002/<%= typeof file != 'undefined' ? file : '' %>" width="700" height="375"> -->
+    
   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
